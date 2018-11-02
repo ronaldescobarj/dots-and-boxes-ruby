@@ -1,0 +1,9 @@
+require 'spec_helper'
+require_relative '../lib/tablero'
+
+describe "Tablero" do
+	it "should start in 0 - 0" do
+		tablero = Tablero.new
+		tablero.puntaje.should == "0 - 0"
+	end
+end

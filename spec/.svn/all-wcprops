@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/csd-master/!svn/ver/6/ejemplo/spec
+END
+spec_helper.rb
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/csd-master/!svn/ver/3/ejemplo/spec/spec_helper.rb
+END
+tenis_spec.rb
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/csd-master/!svn/ver/6/ejemplo/spec/tenis_spec.rb
+END

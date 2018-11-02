@@ -1,0 +1,8 @@
+<h1>Welcome umpire</h1>
+
+<form action="/juego">
+	<input type="text" name="jugador1">
+	<input type="text" name="jugador2">
+	<input type="submit" value="Iniciar">
+</form>
+

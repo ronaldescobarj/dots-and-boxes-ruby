@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/csd-master/!svn/ver/3/ejemplo/views
+END
+home.erb
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/csd-master/!svn/ver/3/ejemplo/views/home.erb
+END
+juego.erb
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/csd-master/!svn/ver/3/ejemplo/views/juego.erb
+END
+layout.erb
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/csd-master/!svn/ver/3/ejemplo/views/layout.erb
+END

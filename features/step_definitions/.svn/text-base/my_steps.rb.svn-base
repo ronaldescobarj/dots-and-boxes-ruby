@@ -1,0 +1,14 @@
+Given(/^I visit home$/) do
+  visit '/'
+end
+
+When(/^I start the game with two players$/) do
+  fill_in("jugador1", :with => "alice")
+  fill_in("jugador2", :with => "bob")
+  click_button("Iniciar")
+end
+
+When(/^jugador uno gana punto$/) do
+  click_button("PJ1")
+end
+

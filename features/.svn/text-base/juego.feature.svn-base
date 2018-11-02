@@ -1,0 +1,13 @@
+Feature: Marcador
+
+Scenario: Comienzo del juego
+	Given I visit home
+	When I start the game with two players
+	Then I should see "0 - 0"
+
+Scenario: Comienzo del juego
+	Given I visit home
+	When I start the game with two players
+		And jugador uno gana punto
+	Then I should see "15 - 0"
+

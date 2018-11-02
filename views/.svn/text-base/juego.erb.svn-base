@@ -1,0 +1,8 @@
+<h1><%= @titulo %></h1>
+
+<h1><%= @puntaje %></h1>
+
+<form action="/punto-jugador-1">
+	<input type="submit" value="PJ1">
+</form>
+

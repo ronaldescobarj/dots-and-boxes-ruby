@@ -1,0 +1,28 @@
+Feature: Bienvenido al mundo del Tenis Geek
+
+Como MrDanger quiero decirle a los meros mortales como se debe programar
+
+Scenario: Visit Home
+	Given I visit home
+	Then I should see "Welcome umpire"
+		And I should see the image "pelotita.gif"
+
+Scenario: Inicio el juego con los que saben
+	Given I visit home
+	When I fill "jugador1" with "Federer"
+		And I fill "jugador2" with "Nadal"
+		And I press "Iniciar"
+	Then I should see "Federer vs Nadal"
+
+Scenario: Inicio el juego con dos perros
+	Given I visit home
+	When I fill "jugador1" with "Peix"
+		And I fill "jugador2" with "Colusso"
+		And I press "Iniciar"
+	Then I should see "Peix vs Colusso"
+
+Scenario: Inicio el juego con el mensaje de bienvenida
+	Given I visit home
+	When I start the game with two players
+	Then I should see the image "pelotita.gif"
+
