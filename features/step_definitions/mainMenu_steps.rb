@@ -1,4 +1,3 @@
-
 Given("entro a la pagina principal") do
   visit('/mainMenu')
 end
