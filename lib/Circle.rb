@@ -1,8 +1,9 @@
 class Circle
-    def initialize(x,y,r)
+    def initialize(x,y,r,id)
         @x = x
         @y = y
         @r = r
+        @id = id
     end
 
     def x
@@ -15,5 +16,9 @@ class Circle
 
     def r
         @r
+    end
+
+    def id
+        @id
     end
 end

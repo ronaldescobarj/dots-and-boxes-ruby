@@ -11,29 +11,36 @@ class App < Sinatra::Base
     get '/game' do
         @circles = []
         @lines = []
+        @marks = []
         for i in 1..5
             for j in 1..5
-                circle = Circle.new(100*j, 50*i, 10)
+                circle = Circle.new(100*j, 100*i, 10,0)
                 @circles.push(circle)
             end
         end
-
-        counter = 1
-
         for i in 1..5
             for j in 1..4
-                line = Line.new(100*j, 50*i, 100*(j+1), 50*i, counter)
-                counter += 1
+                lineId = "l" + (100*j).to_s + "_" + (100*i).to_s + "_" + (100*(j+1)).to_s + "_" + (100*i).to_s
+                line = Line.new(100*j, 100*i, 100*(j+1), 100*i, lineId)
                 @lines.push(line)
             end
         end
         for i in 1..4
             for j in 1..5
-                line = Line.new(100*j, 50*i, 100*j, 50*(i+1), counter)
-                counter += 1
+                lineId = "l" + (100*j).to_s + "_" + (100*i).to_s + "_" + (100*j).to_s + "_" + (100*(i+1)).to_s
+                line = Line.new(100*j, 100*i, 100*j, 100*(i+1), lineId)
                 @lines.push(line)
             end
         end
+        for i in 1..4
+            for j in 1..4
+                lineId = "l" + ((100*j)+50).to_s + "_" + ((100*i)+50).to_s
+                circle = Circle.new((100*j)+50, (100*i)+50, 7, lineId)
+                @marks.push(circle)
+            end
+        end
+    
+
         erb :game
     end
     

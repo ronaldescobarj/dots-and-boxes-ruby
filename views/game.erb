@@ -9,12 +9,18 @@
         <p>Jugador 1 - 0</p>
         <p>Jugador 2 - 0</p>
         <div id="tablero">
+        <p>
+        <%= @prueba%>
+        </p>
             <svg width="1000" height="1000">
                 <% @lines.each do |l| %>
-                    <line id="<%=l.id%>" onclick="markLine(<%=l.id%>)" style="opacity: 0.3" x1="<%=l.x1%>" x2="<%=l.x2%>" y1="<%=l.y1%>" y2="<%=l.y2%>" stroke="green" stroke-width="4" />
+                    <line id="<%=l.id%>" onclick="markLine('<%= l.id%>')" style="opacity: 0.3" x1="<%=l.x1%>" x2="<%=l.x2%>" y1="<%=l.y1%>" y2="<%=l.y2%>" stroke="green" stroke-width="8" />
                 <% end %>
                 <% @circles.each do |c| %>
                     <circle cx="<%=c.x%>" cy="<%=c.y%>" r="<%=c.r%>" stroke="green" stroke-width="4" fill="red" />
+                <% end %>
+                <% @marks.each do |m| %>
+                    <circle id="<%=m.id%>"cx="<%=m.x%>" cy="<%=m.y%>" r="<%=m.r%>" style="visibility: hidden" stroke="green" stroke-width="4" fill="red" />
                 <% end %>
             </svg>
         </div>
