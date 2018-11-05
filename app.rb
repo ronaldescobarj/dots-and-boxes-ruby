@@ -1,6 +1,7 @@
 require 'sinatra'
 require './lib/Circle'
 require './lib/Line'
+require './lib/Player'
 
 class App < Sinatra::Base
 
@@ -12,6 +13,9 @@ class App < Sinatra::Base
         @circles = []
         @lines = []
         @marks = []
+        @players = []
+        players.push(Player.new("Jugador 1", 0, 1))
+        players.push(Player.new("Jugador 2", 0, 2))
         for i in 1..5
             for j in 1..5
                 circle = Circle.new(100*j, 100*i, 10,0)
