@@ -1,12 +1,23 @@
-turns = ["#354698", "#C42615", "#EAA81D", "#86B71B", "#7A3AB9"]
+turns = [
+    {color: "#354698", id: "p1", name: "Jugador 1", score: 0},
+    {color: "#C42615", id: "p2", name: "Jugador 2", score: 0},
+    {color: "#EAA81D", id: "p3", name: "Jugador 3", score: 0},
+    {color: "#86B71B", id: "p4", name: "Jugador 4", score: 0},
+    {color: "#7A3AB9", id: "p5", name: "Jugador 5", score: 0}
+];
 maxTurnsLength = 2;
 index = 0
+
+function updateScore() {
+    turns[index].score += 10;
+    document.getElementById(turns[index].id).innerHTML = turns[index].score;
+}
 
 function markLine(id) {
     let gray = "#7f7f7f";
     let line = document.getElementById(id);
     if (line.getAttribute("stroke") == gray) {
-        line.setAttribute("stroke", turns[index])
+        line.setAttribute("stroke", turns[index].color)
         line.style.opacity = 1;
         checkSquare(id);
     }
@@ -16,6 +27,8 @@ function nextTurn() {
     index++;
     if (index == maxTurnsLength)
         index = 0;
+    document.getElementById("currentPlayer").style.color = turns[index].color;
+    document.getElementById("currentPlayer").innerHTML = "Turno de: " + turns[index].name;
 }
 
 function checkSquare(id) {
@@ -45,8 +58,9 @@ function checkSquareHorizontal(coords) {
             markId = generateMarkId(coords, 50, 50);
             var mark = document.getElementById(markId)
             mark.style.visibility = "visible";
-            mark.setAttribute("stroke", turns[index]);
-            mark.setAttribute("fill", turns[index]);
+            mark.setAttribute("stroke", turns[index].color);
+            mark.setAttribute("fill", turns[index].color);
+            updateScore();
             addedSquare = true;
         }
     }
@@ -56,8 +70,9 @@ function checkSquareHorizontal(coords) {
             markId = generateMarkId(coords, 50, -50);
             var mark = document.getElementById(markId)
             mark.style.visibility = "visible";
-            mark.setAttribute("stroke", turns[index]);
-            mark.setAttribute("fill", turns[index]);
+            mark.setAttribute("stroke", turns[index].color);
+            mark.setAttribute("fill", turns[index].color);
+            updateScore();
             addedSquare = true;
         }
     }
@@ -72,8 +87,9 @@ function checkSquareVertical(coords) {
             markId = generateMarkId(coords, 50, 50);
             var mark = document.getElementById(markId)
             mark.style.visibility = "visible";
-            mark.setAttribute("stroke", turns[index]);
-            mark.setAttribute("fill", turns[index]);
+            mark.setAttribute("stroke", turns[index].color);
+            mark.setAttribute("fill", turns[index].color);
+            updateScore();
             addedSquare = true;
         }
     }
@@ -83,8 +99,9 @@ function checkSquareVertical(coords) {
             markId = generateMarkId(coords, -50, 50);
             var mark = document.getElementById(markId)
             mark.style.visibility = "visible";
-            mark.setAttribute("stroke", turns[index]);
-            mark.setAttribute("fill", turns[index]);
+            mark.setAttribute("stroke", turns[index].color);
+            mark.setAttribute("fill", turns[index].color);
+            updateScore();
             addedSquare = true;
         }
     }

@@ -4,9 +4,12 @@
         <link rel=”stylesheet” href=”styles.css” type=”text/css” />
     </head>
     <body>
-        <h1>tablero</h1>
-        <p>Turno de: Jugador 1</p>
-        <p>Jugador 1 - 0</p>
+        <h1>Dots and boxes</h1>
+        <p id="currentPlayer" style="color: #354698">Turno de: <%=@players[0].name%></p>
+        <% @players.each do |player| %>
+            <p><%=player.name%></p>
+            <p id="<%=player.id%>"><%=player.score%></p>
+        <% end %>
         <div id="tablero">
             <svg width="1000" height="1000">
                 <% @lines.each do |l| %>

@@ -14,8 +14,10 @@ class App < Sinatra::Base
         @lines = []
         @marks = []
         @players = []
-        players.push(Player.new("Jugador 1", 0, 1))
-        players.push(Player.new("Jugador 2", 0, 2))
+        player = Player.new("Jugador 1", 0, "p1")
+        @players.push(player)
+        player = Player.new("Jugador 2", 0, "p2")
+        @players.push(player)
         for i in 1..5
             for j in 1..5
                 circle = Circle.new(100*j, 100*i, 10,0)
