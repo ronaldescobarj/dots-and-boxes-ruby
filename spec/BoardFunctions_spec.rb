@@ -43,8 +43,4 @@ describe BoardFunctions do
         expect(marks[3]).to have_attributes(x: 250,y: 250)
     end
 
-
-
-
-
 end
