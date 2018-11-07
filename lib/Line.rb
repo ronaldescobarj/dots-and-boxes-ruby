@@ -1,10 +1,12 @@
 class Line
-    def initialize(x1,y1,x2,y2,id)
+    def initialize(x1,y1,x2,y2,id,color,opacity)
         @x1 = x1
         @y1 = y1
         @x2 = x2
         @y2 = y2
         @id = id
+        @color = color
+        @opacity = opacity
     end
 
     def x1
@@ -25,5 +27,13 @@ class Line
 
     def id
         @id
+    end
+
+    def color
+        @color
+    end
+
+    def opacity
+        @opacity
     end
 end
