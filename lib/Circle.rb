@@ -23,4 +23,20 @@ class Circle
     def id
         @id
     end
+
+    def color
+        @color
+    end
+
+    def color=(c)
+        @color = c
+    end
+
+    def opacity
+        @opacity
+    end
+
+    def opacity=(o)
+        @opacity = o
+    end
 end

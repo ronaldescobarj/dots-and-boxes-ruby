@@ -3,7 +3,7 @@ require_relative 'Circle'
 require_relative 'Line'
 
 class BoardFunctions
-
+    
     def generate_circles(size)
         circles = []
         for i in 1..size
@@ -16,20 +16,21 @@ class BoardFunctions
     end
 
     def generate_lines(size)
+        line_functions = LineFunctions.new        
         lines = []
-        line_functions = LineFunctions.new
         gray = "#7f7f7f"
+        opacity = 0.3
         for i in 1..size
             for j in 1..size-1
                 lineId = line_functions.generate_id(100*j, 100*i,"horizontal")
-                line = Line.new(100*j, 100*i, 100*(j+1), 100*i, lineId,gray,0)
+                line = Line.new(100*j, 100*i, 100*(j+1), 100*i, lineId,gray,opacity)
                 lines.push(line)
             end
         end
         for i in 1..size-1
             for j in 1..size
                 lineId = line_functions.generate_id(100*j, 100*i,"vertical")
-                line = Line.new(100*j, 100*i, 100*j, 100*(i+1), lineId,gray,0)
+                line = Line.new(100*j, 100*i, 100*j, 100*(i+1), lineId,gray,opacity)
                 lines.push(line)
             end
         end
@@ -48,6 +49,18 @@ class BoardFunctions
             end
         end
         return marks
+    end
+
+    def modify_opacity(x)
+        x.opacity = 1
+        return x
+    end
+
+    def mark_line(x1,x2,direction,lines)
+        line_functions = LineFunctions.new
+        id = line_functions.generate_id(x1,x2,direction)
+        puts id
+        lines.map { |x| x.id == id ? modify_opacity(x) : x }
     end
 
 end

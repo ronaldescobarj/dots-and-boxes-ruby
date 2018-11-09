@@ -18,7 +18,14 @@ class App < Sinatra::Base
         @circles = $circles_global
         @lines = $lines_global
         @marks = $marks_global
+        @max = 4
+        @size = 5
         erb :game
+    end
+
+    post '/game' do
+        $board_functions.mark_line(params[:x].to_i * 100, params[:y].to_i * 100, params[:direction], $lines_global)
+        redirect "/game"
     end
     
     run! if app_file == $0;

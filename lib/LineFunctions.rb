@@ -9,14 +9,14 @@ class LineFunctions
     end
 
     def generate_id_horizontal(x1,y1)
-        x2 = x1+100
+        x2 = x1.to_i + 100
         y2 = y1
         return generate_id_string(x1,y1,x2,y2)
     end
 
     def generate_id_vertical(x1,y1)
+        y2 = y1.to_i + 100
         x2 = x1
-        y2 = y1 + 100
         return generate_id_string(x1,y1,x2,y2)
     end
 

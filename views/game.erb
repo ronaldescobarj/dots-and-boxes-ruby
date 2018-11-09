@@ -8,22 +8,29 @@
         <p>Turno de: Jugador 1</p>
         <p>Jugador 1 - 0</p>
         <p>Jugador 2 - 0</p>
+        <form method="post" action="/game">
+            <label>Coordenada X:</label>
+            <input type="number" min="1" max="<%= @max%>" name="x">
+            <label>Coordenada Y:</label>
+            <input type="number" min="1" max="<%= @max%>" name="y">
+            <select name="direction">
+                <option value="horizontal">Horizontal</option>
+                <option value="vertical">Vertical</option>
+            </select>
+            <input type="submit" value="agregar">
+        </form>
         <div id="tablero">
-        <p>
-        <%= @prueba%>
-        </p>
-            <svg width="1000" height="1000">
+            <svg width="<%=@size * 100 + 15%>" height="<%=@size * 100 + 15%>">
                 <% @lines.each do |l| %>
-                    <line id="<%=l.id%>" onclick="markLine('<%= l.id%>')" style="opacity: 0.3" x1="<%=l.x1%>" x2="<%=l.x2%>" y1="<%=l.y1%>" y2="<%=l.y2%>" stroke="#7f7f7f" stroke-width="8" />
+                    <line id="<%=l.id%>" style="opacity: <%=l.opacity%>" x1="<%=l.x1%>" x2="<%=l.x2%>" y1="<%=l.y1%>" y2="<%=l.y2%>" stroke="<%=l.color%>" stroke-width="8" />
                 <% end %>
                 <% @circles.each do |c| %>
-                    <circle cx="<%=c.x%>" cy="<%=c.y%>" r="<%=c.r%>" stroke="#66636C" stroke-width="4" fill="#66636C" />
+                    <circle cx="<%=c.x%>" cy="<%=c.y%>" r="<%=c.r%>" stroke="<%=c.color%>" stroke-width="4" fill="<%=c.color%>" />
                 <% end %>
                 <% @marks.each do |m| %>
-                    <circle id="<%=m.id%>"cx="<%=m.x%>" cy="<%=m.y%>" r="<%=m.r%>" style="visibility: hidden" stroke="green" stroke-width="4" fill="red" />
+                    <circle id="<%=m.id%>"cx="<%=m.x%>" cy="<%=m.y%>" r="<%=m.r%>" style="opacity: <%=m.opacity%>" stroke="<%=m.color%>" stroke-width="4" fill="<%=m.color%>" />
                 <% end %>
             </svg>
         </div>
-        <script src="code.js" type="text/javascript"></script>
     </body>
 </html>

@@ -33,7 +33,15 @@ class Line
         @color
     end
 
+    def color=(c)
+        @color = c
+    end
+
     def opacity
         @opacity
+    end
+
+    def opacity=(o)
+        @opacity = o
     end
 end

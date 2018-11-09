@@ -1,10 +1,12 @@
 require './lib/BoardFunctions'
+require './lib/LineFunctions'
 require './lib/Circle'
 
 describe BoardFunctions do
 
     before(:each) do
-        @board_functions= BoardFunctions.new()
+        @board_functions= BoardFunctions.new
+        @line_functions= LineFunctions.new
     end
 
     it "un tablero de tamanio 3 deberia devolver 9 circulos" do
@@ -43,4 +45,16 @@ describe BoardFunctions do
         expect(marks[3]).to have_attributes(x: 250,y: 250)
     end
 
+    it "si marco una linea con las coordenadas (100,100) y direccion vertical deberia de tener opacidad en 1" do
+        lines = @board_functions.generate_lines(2)
+        id = @line_functions.generate_id(100, 100, "vertical")
+        @board_functions.mark_line(100, 100, "vertical", lines)
+        new_opacity = 0.0
+        lines.each do |line| 
+            if line.id == id 
+                new_opacity = line.opacity
+            end
+        end
+        expect(new_opacity).to eq 1
+    end
 end
