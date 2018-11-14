@@ -16,21 +16,34 @@ class BoardFunctions
     end
 
     def generate_lines(size)
-        line_functions = LineFunctions.new        
         lines = []
         gray = "#7f7f7f"
         opacity = 0.3
+        lines.concat(generate_horizontal_lines(size))
+        lines.concat(generate_vertical_lines(size))
+        return lines
+    end
+
+    def generate_horizontal_lines(size)
+        line_functions = LineFunctions.new        
+        lines = []
         for i in 1..size
             for j in 1..size-1
                 lineId = line_functions.generate_id(100*j, 100*i,"horizontal")
-                line = Line.new(100*j, 100*i, 100*(j+1), 100*i, lineId,gray,opacity)
+                line = Line.new(100*j, 100*i, 100*(j+1), 100*i, lineId,"#7f7f7f",0.3)
                 lines.push(line)
             end
         end
+        return lines
+    end
+
+    def generate_vertical_lines(size)
+        line_functions = LineFunctions.new        
+        lines = []
         for i in 1..size-1
             for j in 1..size
                 lineId = line_functions.generate_id(100*j, 100*i,"vertical")
-                line = Line.new(100*j, 100*i, 100*j, 100*(i+1), lineId,gray,opacity)
+                line = Line.new(100*j, 100*i, 100*j, 100*(i+1), lineId,"#7f7f7f",0.3)
                 lines.push(line)
             end
         end

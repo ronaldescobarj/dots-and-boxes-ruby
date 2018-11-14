@@ -13,12 +13,32 @@ describe BoardFunctions do
         expect(@board_functions.generate_circles(3).size()).to eq 9
     end
     
-    it "un tablero de tamanio 2 deberia devolver el tablero correspondiente" do
+    it "un tablero de tamanio 2 deberia devolver las coordenadas de los 4 circulos correspondientes" do
         circles = @board_functions.generate_circles(2)
         expect(circles[0]).to have_attributes(x: 100,y: 100)
         expect(circles[1]).to have_attributes(x: 200,y: 100)
         expect(circles[2]).to have_attributes(x: 100,y: 200)
         expect(circles[3]).to have_attributes(x: 200,y: 200)
+    end
+
+    it "un tablero de tamanio 2 deberia generar 2 lineas horizontales" do
+        expect(@board_functions.generate_horizontal_lines(2).size()).to eq 2
+    end
+
+    it "un tablero de tamanio 2 deberia devolver las coordenadas de las 2 lineas horizontales correspondientes" do
+        horizontal_lines = @board_functions.generate_horizontal_lines(2)
+        expect(horizontal_lines[0]).to have_attributes(x1: 100, y1: 100, x2: 200, y2: 100)
+        expect(horizontal_lines[1]).to have_attributes(x1: 100, y1: 200, x2: 200, y2: 200)
+    end
+
+    it "un tablero de tamanio 2 deberia devolver 2 lineas verticales" do
+        expect(@board_functions.generate_vertical_lines(2).size()).to eq 2
+    end
+
+    it "un tablero de tamanio 2 deberia devolver las coordenadas de las 2 lineas verticales correspondientes" do
+        vertical_lines = @board_functions.generate_vertical_lines(2)
+        expect(vertical_lines[0]).to have_attributes(x1: 100, y1: 100, x2: 100, y2: 200)
+        expect(vertical_lines[1]).to have_attributes(x1: 200, y1: 100, x2: 200, y2: 200)
     end
 
     it "un tablero de tamanio 2 deberia devolver 4 lineas" do
@@ -37,7 +57,7 @@ describe BoardFunctions do
         expect(@board_functions.generate_marks(2).size()).to eq 4
     end
     
-    it "un tablero de tamanio 2 deberia devolver el tablero correspondiente" do
+    it "un tablero de tamanio 2 deberia devolver las marcas con las coordenadas correspondientes" do
         marks = @board_functions.generate_marks(2)
         expect(marks[0]).to have_attributes(x: 150,y: 150)
         expect(marks[1]).to have_attributes(x: 250,y: 150)
