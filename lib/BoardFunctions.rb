@@ -72,7 +72,6 @@ class BoardFunctions
     def mark_line(x1,x2,direction,lines)
         line_functions = LineFunctions.new
         id = line_functions.generate_id(x1,x2,direction)
-        puts id
         lines.map { |x| x.id == id ? modify_opacity(x) : x }
     end
 

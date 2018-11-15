@@ -4,20 +4,20 @@
         <link rel=”stylesheet” href=”styles.css” type=”text/css” />
     </head>
     <body>
-        <h1>tablero</h1>
+        <h1>Dots and Boxes</h1>
         <p>Turno de: Jugador 1</p>
         <p>Jugador 1 - 0</p>
         <p>Jugador 2 - 0</p>
         <form method="post" action="/game">
             <label>Coordenada X:</label>
-            <input type="number" min="1" max="<%= @max%>" name="x">
+            <input type="number" min="1" max="<%= @max%>" name="x" id="x">
             <label>Coordenada Y:</label>
-            <input type="number" min="1" max="<%= @max%>" name="y">
-            <select name="direction">
+            <input type="number" min="1" max="<%= @max%>" name="y" id="y">
+            <select name="direction" id="direction">
                 <option value="horizontal">Horizontal</option>
                 <option value="vertical">Vertical</option>
             </select>
-            <input type="submit" value="agregar">
+            <input type="submit" value="Agregar">
         </form>
         <div id="tablero">
             <svg width="<%=@size * 100 + 15%>" height="<%=@size * 100 + 15%>">
