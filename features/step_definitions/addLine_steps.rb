@@ -13,8 +13,11 @@ Then("deberia ver el palito agregado en {string}, {string}") do |string, string2
   expect(page.find("#l100_100_200_100")[:style]).to have_content("opacity: 1")
 end
 
-Then("con el color {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("con el color {string}") do |color|
+  if color == "azul"
+    color = "#354698"
+  end
+  expect(page.find("#l100_100_200_100")[:stroke]).to have_content("#354698")
 end
 
 Given("hay tres lineas que pueden formar un cuadrado") do
