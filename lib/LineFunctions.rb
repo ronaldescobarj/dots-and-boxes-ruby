@@ -8,6 +8,10 @@ class LineFunctions
         return "l" + x1.to_s + "_" + y1.to_s  + "_" + x2.to_s + "_" + y2.to_s
     end
 
+    def generate_id_string_object(obj)
+        return "l" + obj.x1.to_s + "_" + obj.y1.to_s  + "_" + obj.x2.to_s + "_" + obj.y2.to_s
+    end
+
     def generate_id_horizontal(x1,y1)
         x2 = x1.to_i + 100
         y2 = y1
