@@ -14,7 +14,7 @@ Feature: Colocar un palito
             And hay tres lineas que pueden formar un cuadrado
         When pongo el palito en las coordenadas "1", "1" con la direccion "Horizontal" y es el turno del jugador con el color "azul" y hago clic en "Agregar"
         Then deberia ver la marca en la posicion "1.5", "1.5"
-            And con el color "azul" dentro del cuadrado formado
+            And con el color "rojo" dentro del cuadrado formado
 
     Scenario: mantener el turno si es que se forma un cuadrado
         Given estoy en la vista del juego
