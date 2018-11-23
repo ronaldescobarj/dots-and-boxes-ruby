@@ -3,19 +3,22 @@ Given("entro a la pagina principal") do
   visit('/mainMenu')
 end
 
-When("hago clic en {string}") do |string|
-  click_on(string)
+When("hago clic en {string}") do |jugar|
+  click_on(jugar)
 end
 
-Then("deberia ver el {string}") do |string|
-  expect(page).to have_content(string)
+Then("deberia ver el {string}") do |titulo_del_juego|
+  expect(page).to have_content(titulo_del_juego)
 end
 
-Then("deberia ver {string} y {string}") do |string, string2|
-  expect(page).to have_content(string)
-  expect(page).to have_content(string2)
+Then("deberia ver el primer jugador {string} con el puntaje {string}") do |jugador, puntaje|
+  expect(page).to have_content(jugador + ": " + puntaje)
 end
 
-Then("deberia ver {string}") do |string|
-  expect(page).to have_content(string)
+Then("deberia ver el segundo jugador {string} con el puntaje {string}") do |jugador, puntaje|
+    expect(page).to have_content(jugador + ": " + puntaje)
+end
+
+Then("deberia ver que es el turno de {string}") do |jugador|
+  expect(page).to have_content("Turno de: " + jugador)
 end

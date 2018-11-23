@@ -24,8 +24,9 @@ class App < Sinatra::Base
         @circles = $circles_global
         @lines = $lines_global
         @marks = $marks_global
-        @max = 5
         @size = 5
+        @current_turn = $current_turn
+        @players = $players
         erb :game
     end
 

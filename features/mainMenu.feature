@@ -11,9 +11,10 @@ Feature: Iniciar una nueva partida
     Scenario: puntajes
         Given entro a la pagina principal
         When hago clic en "Jugar"
-        Then deberia ver "Jugador 1 - 0" y "Jugador 2 - 0"
+        Then deberia ver el primer jugador "Laura" con el puntaje "0"
+        And deberia ver el segundo jugador "Andrea" con el puntaje "0"
     
     Scenario: turno
         Given entro a la pagina principal
         When hago clic en "Jugar"
-        Then deberia ver "Turno de: Jugador 1"
+        Then deberia ver que es el turno de "Andrea" 

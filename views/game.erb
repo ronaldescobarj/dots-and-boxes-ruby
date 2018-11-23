@@ -5,14 +5,15 @@
     </head>
     <body>
         <h1>Dots and Boxes</h1>
-        <p>Turno de: Jugador 1</p>
-        <p>Jugador 1 - 0</p>
-        <p>Jugador 2 - 0</p>
+        <p>Turno de: <%= @players[@current_turn].name%></p>
+        <% @players.each do |p| %>
+            <p id="<%=p.id%>"><%=p.name%>: <%=p.score%></p>
+        <% end %>
         <form method="post" action="/game">
             <label>Coordenada X:</label>
-            <input type="number" min="1" max="<%= @max%>" name="x" id="x">
+            <input type="number" min="1" max="<%= @size%>" name="x" id="x">
             <label>Coordenada Y:</label>
-            <input type="number" min="1" max="<%= @max%>" name="y" id="y">
+            <input type="number" min="1" max="<%= @size%>" name="y" id="y">
             <select name="direction" id="direction">
                 <option value="horizontal">Horizontal</option>
                 <option value="vertical">Vertical</option>
