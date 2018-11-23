@@ -60,9 +60,7 @@ class App < Sinatra::Base
             $player_functions.increase_score($players[$current_turn], formed_squares)
             $showable_players = $players.clone
             $current_turn = $board_functions.get_current_turn($current_turn, no_new_squares_formed, $players)
-            if ! no_new_squares_formed
-                $player_functions.sort_by_score($showable_players)
-            end
+            $player_functions.sort_by_score($showable_players)
         end
         redirect "/game"
     end
