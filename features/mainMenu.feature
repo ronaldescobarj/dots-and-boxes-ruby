@@ -17,4 +17,4 @@ Feature: Iniciar una nueva partida
     Scenario: turno
         Given entro a la pagina principal
         When hago clic en "Jugar"
-        Then deberia ver que es el turno de "Andrea" 
+        Then deberia ver que es el turno de "Laura" 

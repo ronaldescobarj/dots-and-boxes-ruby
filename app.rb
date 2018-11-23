@@ -17,6 +17,7 @@ class App < Sinatra::Base
     $current_turn = 0
 
     get '/mainMenu' do
+        reset()
         erb :mainMenu
     end
 
@@ -38,6 +39,14 @@ class App < Sinatra::Base
         end
     end
 
+    def reset()
+        $circles_global = $board_functions.generate_circles(5)
+        $lines_global = $board_functions.generate_lines(5)
+        $marks_global = $board_functions.generate_marks(5)
+        $players = $player_functions.generate_players(["Laura", "Andrea"])
+        $current_turn = 0
+    end
+
     post '/game' do
         if validate_positions(params[:x].to_i, params[:y].to_i, params[:direction])
             line_id = $line_functions.generate_id(params[:x].to_i * 100, params[:y].to_i * 100, params[:direction])
@@ -45,8 +54,8 @@ class App < Sinatra::Base
             formed_squares = $board_functions.get_directions_of_formed_squares($lines_global, line_id, 5)
             $board_functions.make_marks_visible(formed_squares, $marks_global, line_id, $current_turn)
             no_new_squares_formed = formed_squares.empty?
+            $player_functions.increase_score($players[$current_turn], formed_squares)
             $current_turn = $board_functions.get_current_turn($current_turn, no_new_squares_formed, $players)
-            
         end
         redirect "/game"
     end

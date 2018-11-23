@@ -16,7 +16,7 @@ Then("deberia ver el primer jugador {string} con el puntaje {string}") do |jugad
 end
 
 Then("deberia ver el segundo jugador {string} con el puntaje {string}") do |jugador, puntaje|
-    expect(page).to have_content(jugador + ": " + puntaje)
+  expect(page).to have_content(jugador + ": " + puntaje)
 end
 
 Then("deberia ver que es el turno de {string}") do |jugador|
