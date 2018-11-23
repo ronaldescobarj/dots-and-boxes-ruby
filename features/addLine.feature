@@ -24,7 +24,6 @@ Feature: Colocar un palito
 
     Scenario: actualizar puntaje si es que se forma un cuadrado
         Given estoy en la vista del juego
-            And el puntaje inicial es "0"
             And hay tres lineas que pueden formar un cuadrado
         When pongo el palito en las coordenadas "1", "1" con la direccion "Horizontal" y es el turno del jugador con el color "azul" y hago clic en "Agregar"
-        Then deberia actualizarse el puntaje del jugador "azul" a "100"
+        Then deberia actualizarse el puntaje del jugador "Andrea" en "100"

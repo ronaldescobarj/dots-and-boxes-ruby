@@ -64,10 +64,6 @@ Then("deberia seguir siendo el turno del jugador con el nombre {string}") do |no
   expect(page).to have_content("Turno de: " + nombre)
 end
 
-Given("el puntaje inicial es {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then("deberia actualizarse el puntaje del jugador {string} a {string}") do |string, string2|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("deberia actualizarse el puntaje del jugador {string} en {string}") do |jugador, puntaje|
+  expect(page).to have_content(jugador + ": " + puntaje)
 end
