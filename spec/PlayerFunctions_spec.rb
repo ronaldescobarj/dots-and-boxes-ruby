@@ -53,4 +53,11 @@ describe PlayerFunctions do
         @player_functions.increase_score(@players[0], formed_squares)
         expect(@players[0].score).to eq player_score+200
     end
+
+    it "deberian ordenarse los jugadores por puntaje" do
+        @players[1].score = 100
+        @player_functions.sort_by_score(@players)
+        expect(@players[0].name).to eq "Pepe"
+        expect(@players[1].name).to eq "Ximena"
+    end
 end
