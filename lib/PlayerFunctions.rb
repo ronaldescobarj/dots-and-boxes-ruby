@@ -11,4 +11,8 @@ class PlayerFunctions
         end
         return players
     end
+
+    def increase_score(player)
+        player.score += 100
+    end
 end
