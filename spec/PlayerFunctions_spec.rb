@@ -33,9 +33,24 @@ describe PlayerFunctions do
         expect(@players[1]).to have_attributes(color: colors[1])
     end
 
-    it "deberia aumentar el puntaje si se forma un cuadrado" do
+    it "no deberia aumentar el puntaje sino se forma un cuadrado" do
         player_score = @players[0].score
-        @player_functions.increase_score(@players[0])
+        formed_squares = []
+        @player_functions.increase_score(@players[0], formed_squares)
+        expect(@players[0].score).to eq player_score
+    end
+
+    it "deberia aumentar el puntaje en 100 si se forma un cuadrado" do
+        player_score = @players[0].score
+        formed_squares = ["up"]
+        @player_functions.increase_score(@players[0], formed_squares)
         expect(@players[0].score).to eq player_score+100
+    end
+
+    it "deberia aumentar el puntaje en 200 si se forma un cuadrado" do
+        player_score = @players[0].score
+        formed_squares = ["up", "down"]
+        @player_functions.increase_score(@players[0], formed_squares)
+        expect(@players[0].score).to eq player_score+200
     end
 end

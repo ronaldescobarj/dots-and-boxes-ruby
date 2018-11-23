@@ -46,6 +46,7 @@ class App < Sinatra::Base
             $board_functions.make_marks_visible(formed_squares, $marks_global, line_id, $current_turn)
             no_new_squares_formed = formed_squares.empty?
             $current_turn = $board_functions.get_current_turn($current_turn, no_new_squares_formed, $players)
+            
         end
         redirect "/game"
     end

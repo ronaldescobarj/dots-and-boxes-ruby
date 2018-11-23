@@ -12,7 +12,9 @@ class PlayerFunctions
         return players
     end
 
-    def increase_score(player)
-        player.score += 100
+    def increase_score(player,formed_squares)
+        for formed_square in formed_squares
+            player.score += 100
+        end
     end
 end
