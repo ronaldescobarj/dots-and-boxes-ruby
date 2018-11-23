@@ -60,8 +60,8 @@ Then("con el color {string} dentro del cuadrado formado") do |color|
   expect(page.find("#" + $mark_id)[:stroke]).to have_content(color)
 end
 
-Then("deberia seguir siendo el turno del jugador con el color {string}") do |string|
-  pending # Write code here that turns the phrase above into concrete actions
+Then("deberia seguir siendo el turno del jugador con el nombre {string}") do |nombre|
+  expect(page).to have_content("Turno de: " + nombre)
 end
 
 Given("el puntaje inicial es {string}") do |string|

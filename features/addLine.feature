@@ -20,7 +20,7 @@ Feature: Colocar un palito
         Given estoy en la vista del juego
             And hay tres lineas que pueden formar un cuadrado
         When pongo el palito en las coordenadas "1", "1" con la direccion "Horizontal" y es el turno del jugador con el color "azul" y hago clic en "Agregar"
-        Then deberia seguir siendo el turno del jugador con el color "rojo"
+        Then deberia seguir siendo el turno del jugador con el nombre "Andrea"
 
     Scenario: actualizar puntaje si es que se forma un cuadrado
         Given estoy en la vista del juego
