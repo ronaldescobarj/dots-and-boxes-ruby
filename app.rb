@@ -14,6 +14,7 @@ class App < Sinatra::Base
     $lines_global = $board_functions.generate_lines(5)
     $marks_global = $board_functions.generate_marks(5)
     $players = $player_functions.generate_players(["Laura", "Andrea"])
+    $showable_players = $players.clone
     $current_turn = 0
 
     get '/mainMenu' do
@@ -28,6 +29,7 @@ class App < Sinatra::Base
         @size = 5
         @current_turn = $current_turn
         @players = $players
+        @showable_players = $showable_players
         erb :game
     end
 
@@ -44,6 +46,7 @@ class App < Sinatra::Base
         $lines_global = $board_functions.generate_lines(5)
         $marks_global = $board_functions.generate_marks(5)
         $players = $player_functions.generate_players(["Laura", "Andrea"])
+        $showable_players = $players.clone
         $current_turn = 0
     end
 
@@ -55,7 +58,11 @@ class App < Sinatra::Base
             $board_functions.make_marks_visible(formed_squares, $marks_global, line_id, $current_turn)
             no_new_squares_formed = formed_squares.empty?
             $player_functions.increase_score($players[$current_turn], formed_squares)
+            $showable_players = $players.clone
             $current_turn = $board_functions.get_current_turn($current_turn, no_new_squares_formed, $players)
+            if ! no_new_squares_formed
+                $player_functions.sort_by_score($showable_players)
+            end
         end
         redirect "/game"
     end

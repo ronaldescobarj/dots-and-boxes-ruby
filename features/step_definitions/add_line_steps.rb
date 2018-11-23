@@ -14,10 +14,6 @@ def get_color(color)
   return color
 end
 
-Given("estoy en la vista del juego") do
-  visit('/game')
-end
-
 When("pongo el palito en las coordenadas {string}, {string} con la direccion {string} y es el turno del jugador con el color {string} y hago clic en {string}") do |x, y, direccion, color, agregar|
   fill_in('x', with: x.to_i)
   fill_in('y', with: y.to_i)

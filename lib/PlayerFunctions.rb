@@ -17,4 +17,8 @@ class PlayerFunctions
             player.score += 100
         end
     end
+
+    def sort_by_score(players)
+        players.sort! {|player1, player2| player2.score <=> player1.score }
+    end
 end

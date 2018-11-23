@@ -6,8 +6,10 @@
     <body>
         <h1>Dots and Boxes</h1>
         <p>Turno de: <%= @players[@current_turn].name%></p>
-        <% @players.each do |p| %>
-            <p id="<%=p.id%>"><%=p.name%>: <%=p.score%></p>
+        <% @showable_players.each_with_index do |player, index| %>
+            <p>
+                <%=index+1%>. <%=player.name%>: <%=player.score%>
+            </p>
         <% end %>
         <form method="post" action="/game">
             <label>Coordenada X:</label>
