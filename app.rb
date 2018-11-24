@@ -32,6 +32,7 @@ class App < Sinatra::Base
         $circles_global = $board_functions.generate_circles(5)
         $lines_global = $board_functions.generate_lines(5)
         $marks_global = $board_functions.generate_marks(5)
+        $player_functions.reset_scores($players)
         $current_turn = 0
     end
 
