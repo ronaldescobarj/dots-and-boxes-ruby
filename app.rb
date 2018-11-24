@@ -21,6 +21,7 @@ class App < Sinatra::Base
     $size = 5
     $game_over = false
 
+
     def validate_positions(x, y, direction)
         if direction == "horizontal"
             return x<$size && y<=$size && x>0 && y>0
@@ -39,6 +40,10 @@ class App < Sinatra::Base
 
     def reset_players()
         $showable_players = $players.clone
+    end
+
+    get '/' do
+        redirect '/mainMenu'
     end
 
     get '/mainMenu' do
