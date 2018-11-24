@@ -301,4 +301,13 @@ class BoardFunctions
         end
     end
 
+    def is_game_over(lines)
+        for line in lines
+            if line.opacity != 1
+                return false
+            end
+        end
+        return true
+    end
+
 end

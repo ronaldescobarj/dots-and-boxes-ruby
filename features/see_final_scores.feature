@@ -5,8 +5,10 @@ Feature: Ver puntajes finales de la partida
 
     Scenario: ver lista ordenada de jugadores
         Given la partida actual termino
+        When presiono el boton "Ver puntajes finales"
         Then deberia ver en primer lugar a "Andrea" y en segundo a "Laura"
 
     Scenario: ver quien gano
         Given la partida actual termino
+        When presiono el boton "Ver puntajes finales"
         Then deberia ver que gano "Andrea"

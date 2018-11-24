@@ -18,6 +18,7 @@ class App < Sinatra::Base
     $showable_players = $players.clone
     $current_turn = 0
     $size = 5
+    $game_over = false
 
     def validate_positions(x, y, direction)
         if direction == "horizontal"
@@ -50,6 +51,7 @@ class App < Sinatra::Base
         @current_turn = $current_turn
         @players = $players
         @showable_players = $showable_players
+        @game_over = $game_over
         erb :game
     end
 
@@ -91,6 +93,9 @@ class App < Sinatra::Base
             $showable_players = $players.clone
             $current_turn = $board_functions.get_current_turn($current_turn, no_new_squares_formed, $players)
             $player_functions.sort_by_score($showable_players)
+            if $board_functions.is_game_over($lines_global)
+                $game_over = true
+            end
         end
         redirect "/game"
     end

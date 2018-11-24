@@ -22,6 +22,9 @@
             </select>
             <input type="submit" value="Agregar">
         </form>
+        <% if @game_over %>
+            <a href="/finalScores">Ver puntajes finales</a>
+        <% end %>
         <div id="tablero">
             <svg width="<%=@size * 100 + 15%>" height="<%=@size * 100 + 15%>">
                 <% @lines.each do |l| %>

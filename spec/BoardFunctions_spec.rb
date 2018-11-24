@@ -481,4 +481,17 @@ describe BoardFunctions do
         expect(formed_squares[0]).to eq "right"
     end
 
+    it "deberia devolver true si el juego termino" do
+        lines = @board_functions.generate_lines(2)
+        lines.map do |l|
+            l.opacity = 1
+        end
+        expect(@board_functions.is_game_over(lines)).to eq true
+    end
+
+    it "deberia devolver falso si el juego no termino" do
+        lines = @board_functions.generate_lines(2)
+        expect(@board_functions.is_game_over(lines)).to eq false
+    end
+
 end
