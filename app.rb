@@ -13,7 +13,8 @@ class App < Sinatra::Base
     $circles_global = $board_functions.generate_circles(5)
     $lines_global = $board_functions.generate_lines(5)
     $marks_global = $board_functions.generate_marks(5)
-    $players = $player_functions.generate_players(["Laura", "Andrea"])
+    $players = $player_functions.generate_players(["Player1", "Player2"])
+    $number_of_players = 2
     $showable_players = $players.clone
     $current_turn = 0
     $size = 5
@@ -30,13 +31,14 @@ class App < Sinatra::Base
         $circles_global = $board_functions.generate_circles(5)
         $lines_global = $board_functions.generate_lines(5)
         $marks_global = $board_functions.generate_marks(5)
-        $players = $player_functions.generate_players(["Laura", "Andrea"])
+        # $players = $player_functions.generate_players(["Player1", "Player2"])
         $showable_players = $players.clone
         $current_turn = 0
     end
 
     get '/mainMenu' do
         reset()
+        @number_of_players = $number_of_players
         erb :main_menu
     end
 
@@ -62,6 +64,19 @@ class App < Sinatra::Base
         $circles_global = $board_functions.generate_circles($size)
         $lines_global = $board_functions.generate_lines($size)
         $marks_global = $board_functions.generate_marks($size)
+        players = []
+        if $number_of_players.to_i >= 2
+            players.push(params[:player1])
+            players.push(params[:player2])
+        end
+        if $number_of_players.to_i >= 3
+            players.push(params[:player3])
+        end
+        if $number_of_players.to_i >= 4
+            players.push(params[:player4])
+        end
+        $players = $player_functions.generate_players(players)
+        $showable_players = $players.clone
         redirect '/game'
     end
 
@@ -78,6 +93,11 @@ class App < Sinatra::Base
             $player_functions.sort_by_score($showable_players)
         end
         redirect "/game"
+    end
+
+    post '/numberOfPlayers' do
+        $number_of_players = params[:players]
+        redirect "/mainMenu"
     end
     
     run! if app_file == $0;

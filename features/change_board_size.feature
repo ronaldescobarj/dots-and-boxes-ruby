@@ -10,5 +10,9 @@ Feature: Cambiar el tamaño del tablero
     Scenario: Al iniciar la partida, se podrá ver el tablero de acuerdo al tamaño establecido
         Given entro a la pagina principal
         When selecciono un tamaño "7x7"
+            And lleno los nombres con "Laura" y "Andrea"
             And hago clic en "Jugar"
         Then deberia ver el tablero con el tamaño "7x7"
+
+
+       

@@ -5,12 +5,14 @@ Feature: Ver el estado actual del tablero
 
     Scenario: ver palitos agregados con los colores respectivos
         Given entro a la pagina principal
-        When hago clic en "Jugar"
+        When lleno los nombres con "Laura" y "Andrea"
+            And hago clic en "Jugar"
             And agrego 5 palitos
         Then deberia ver todos los palitos agregados con los colores respectivos
 
     Scenario: ver marcas ganadas con los colores respectivos
         Given entro a la pagina principal
-        When hago clic en "Jugar"
+        When lleno los nombres con "Laura" y "Andrea"
+            And hago clic en "Jugar"
             And agrego 5 palitos
         Then deberia ver todas las marcas ganadas con los colores respectivos

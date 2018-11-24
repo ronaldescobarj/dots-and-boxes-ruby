@@ -5,7 +5,8 @@ Feature: Ver los puntajes actuales de cada jugador
 
     Scenario: ver lista ordenada de jugadores
         Given entro a la pagina principal
-        When hago clic en "Jugar"
+        When lleno los nombres con "Laura" y "Andrea"
+            And hago clic en "Jugar"
             And el jugador uno "Andrea" formo un cuadrado
             And el jugador dos "Laura" tiene "0"
         Then deberia ver primero a "Andrea" y luego a "Laura"

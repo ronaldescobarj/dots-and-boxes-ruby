@@ -5,6 +5,7 @@ Feature: Ver el turno actual
 
     Scenario: ver nombre del jugador actual
         Given entro a la pagina principal
-        When hago clic en "Jugar"
-        And el jugador uno "Laura" hizo una jugada
+        When lleno los nombres con "Laura" y "Andrea"
+            And hago clic en "Jugar"
+            And el jugador uno "Laura" hizo una jugada
         Then deberia ser el turno de "Andrea"

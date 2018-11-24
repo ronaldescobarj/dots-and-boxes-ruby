@@ -1,5 +1,7 @@
 Given("la partida actual termino") do
   visit('/mainMenu')
+  fill_in('player1', with: "Laura")
+  fill_in('player2', with: "Andrea")
   click_on("Jugar")
 
   fill_in('x', with: 2)

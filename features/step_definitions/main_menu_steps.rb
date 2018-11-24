@@ -8,6 +8,11 @@ When("hago clic en {string}") do |jugar|
   click_on(jugar)
 end
 
+When("lleno los nombres con {string} y {string}") do |jugador1, jugador2|
+  fill_in('player1', with: jugador1)
+  fill_in('player2', with: jugador2)
+end
+
 Then("deberia ver el tablero vacio") do
   board_functions = BoardFunctions.new
   lines = board_functions.generate_lines(5)
