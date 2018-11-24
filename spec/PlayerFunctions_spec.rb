@@ -60,4 +60,13 @@ describe PlayerFunctions do
         expect(@players[0].name).to eq "Pepe"
         expect(@players[1].name).to eq "Ximena"
     end
+
+    it "deberian reiniciarse todos los puntajes a 0" do
+        @players[0].score = 100
+        @players[1].score = 100
+        @player_functions.reset_scores(@players)
+        expect(@players[0].score).to eq 0
+        expect(@players[1].score).to eq 0
+
+    end
 end

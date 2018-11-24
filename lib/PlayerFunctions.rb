@@ -22,4 +22,10 @@ class PlayerFunctions
         players.sort! {|player1, player2| player2.score <=> player1.score }
     end
 
+    def reset_scores(players)
+        players.map do |player|
+            player.score = 0
+        end
+    end
+
 end
