@@ -1,0 +1,9 @@
+<div>
+    <h3>Ganador: <%=@showable_players[0].name%></h3>
+    <h4>Puntajes finales</h4>
+    <% @showable_players.each_with_index do |player, index| %>
+        <p>
+            <%=index+1%>. <%=player.name%>: <%=player.score%>
+        </p>
+    <% end %>
+</div>

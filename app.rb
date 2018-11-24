@@ -17,6 +17,23 @@ class App < Sinatra::Base
     $showable_players = $players.clone
     $current_turn = 0
 
+    def validate_positions(x, y, direction)
+        if direction == "horizontal"
+            return x<5 && y<=5
+        else
+            return x<=5 && y<5
+        end
+    end
+
+    def reset()
+        $circles_global = $board_functions.generate_circles(5)
+        $lines_global = $board_functions.generate_lines(5)
+        $marks_global = $board_functions.generate_marks(5)
+        $players = $player_functions.generate_players(["Laura", "Andrea"])
+        $showable_players = $players.clone
+        $current_turn = 0
+    end
+
     get '/mainMenu' do
         reset()
         erb :main_menu
@@ -33,21 +50,10 @@ class App < Sinatra::Base
         erb :game
     end
 
-    def validate_positions(x, y, direction)
-        if direction == "horizontal"
-            return x<5 && y<=5
-        else
-            return x<=5 && y<5
-        end
-    end
-
-    def reset()
-        $circles_global = $board_functions.generate_circles(5)
-        $lines_global = $board_functions.generate_lines(5)
-        $marks_global = $board_functions.generate_marks(5)
-        $players = $player_functions.generate_players(["Laura", "Andrea"])
-        $showable_players = $players.clone
-        $current_turn = 0
+    get '/finalScores' do
+        @showable_players = $players.clone
+        $player_functions.sort_by_score(@showable_players)
+        erb :final_scores
     end
 
     post '/game' do
