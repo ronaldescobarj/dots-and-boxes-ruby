@@ -4,6 +4,7 @@ require './lib/Line'
 require './lib/BoardFunctions'
 require './lib/LineFunctions'
 require './lib/PlayerFunctions'
+require 'rubygems'
 
 class App < Sinatra::Base
 
