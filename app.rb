@@ -16,12 +16,13 @@ class App < Sinatra::Base
     $players = $player_functions.generate_players(["Laura", "Andrea"])
     $showable_players = $players.clone
     $current_turn = 0
+    $size = 5
 
     def validate_positions(x, y, direction)
         if direction == "horizontal"
-            return x<5 && y<=5
+            return x<$size && y<=$size && x>0 && y>0
         else
-            return x<=5 && y<5
+            return x<=$size && y<$size && x>0 && y>0
         end
     end
 
@@ -43,7 +44,7 @@ class App < Sinatra::Base
         @circles = $circles_global
         @lines = $lines_global
         @marks = $marks_global
-        @size = 5
+        @size = $size
         @current_turn = $current_turn
         @players = $players
         @showable_players = $showable_players
@@ -57,10 +58,18 @@ class App < Sinatra::Base
     end
 
     post '/game' do
+        $size = params[:sizes].to_i
+        $circles_global = $board_functions.generate_circles($size)
+        $lines_global = $board_functions.generate_lines($size)
+        $marks_global = $board_functions.generate_marks($size)
+        redirect '/game'
+    end
+
+    post '/addLine' do
         if validate_positions(params[:x].to_i, params[:y].to_i, params[:direction])
             line_id = $line_functions.generate_id(params[:x].to_i * 100, params[:y].to_i * 100, params[:direction])
             $board_functions.mark_line(line_id, $lines_global, $current_turn)
-            formed_squares = $board_functions.get_directions_of_formed_squares($lines_global, line_id, 5)
+            formed_squares = $board_functions.get_directions_of_formed_squares($lines_global, line_id, $size)
             $board_functions.make_marks_visible(formed_squares, $marks_global, line_id, $current_turn)
             no_new_squares_formed = formed_squares.empty?
             $player_functions.increase_score($players[$current_turn], formed_squares)

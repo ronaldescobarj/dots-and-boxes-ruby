@@ -11,7 +11,7 @@
                 <%=index+1%>. <%=player.name%>: <%=player.score%>
             </p>
         <% end %>
-        <form method="post" action="/game">
+        <form method="post" action="/addLine">
             <label>Coordenada X:</label>
             <input type="number" min="1" max="<%= @size%>" name="x" id="x">
             <label>Coordenada Y:</label>
