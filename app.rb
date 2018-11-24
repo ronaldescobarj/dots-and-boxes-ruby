@@ -32,13 +32,16 @@ class App < Sinatra::Base
         $circles_global = $board_functions.generate_circles(5)
         $lines_global = $board_functions.generate_lines(5)
         $marks_global = $board_functions.generate_marks(5)
-        # $players = $player_functions.generate_players(["Player1", "Player2"])
-        $showable_players = $players.clone
         $current_turn = 0
+    end
+
+    def reset_players()
+        $showable_players = $players.clone
     end
 
     get '/mainMenu' do
         reset()
+        reset_players()
         @number_of_players = $number_of_players
         erb :main_menu
     end
@@ -103,6 +106,11 @@ class App < Sinatra::Base
     post '/numberOfPlayers' do
         $number_of_players = params[:players]
         redirect "/mainMenu"
+    end
+
+    get '/reset' do
+        reset()
+        redirect '/game'
     end
     
     run! if app_file == $0;
