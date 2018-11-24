@@ -19,7 +19,7 @@ class App < Sinatra::Base
 
     get '/mainMenu' do
         reset()
-        erb :mainMenu
+        erb :main_menu
     end
 
     get '/game' do
