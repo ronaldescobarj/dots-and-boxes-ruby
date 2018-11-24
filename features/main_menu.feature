@@ -6,7 +6,7 @@ Feature: Iniciar una nueva partida
     Scenario: tablero vacio
         Given entro a la pagina principal
         When hago clic en "Jugar"
-        Then deberia ver el "Dots and Boxes"
+        Then deberia ver el tablero vacio
 
     Scenario: puntajes
         Given entro a la pagina principal
