@@ -21,3 +21,12 @@ Feature: Reiniciar la partida
         When hago clic en "Reiniciar partida"
         Then deberia ver el primer jugador "Laura" con el puntaje "0"
         And deberia ver el segundo jugador "Andrea" con el puntaje "0"
+
+    Scenario: Se verá que es el turno del jugador uno
+        Given entro a la pagina principal
+        And lleno los nombres con "Laura" y "Andrea"
+        And hago clic en "Jugar"
+        And hago una jugada
+        And abro el menu de "Pausa"
+        When hago clic en "Reiniciar partida"
+        Then deberia ver que es el turno de "Laura"
