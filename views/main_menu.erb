@@ -1,25 +1,60 @@
-<h1>Dots and boxes</h1>
-<h4>Menu principal</h4>
-<form method = "post" action="/game">
-    <select name="sizes" id = "sizes">
-        <option value="3">3x3</option>
-        <option value="4">4x4</option>
-        <option value="5" selected>5x5</option>
-        <option value="6">6x6</option>
-        <option value="7">7x7</option>
-        <option value="8">8x8</option>
-    </select>
-    <% for index in 1..@number_of_players.to_i %>
-        <input type="text" name="player<%=index%>" id ="player<%=index%>">
-    <% end %>
-    <input type="submit" name="Jugar" id="Jugar" value="Jugar">
-</form>
-
-<form method = "post" action="/numberOfPlayers">
-    <select name="players" id = "players">
-        <option value="2" selected>2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-    </select>
-    <input type="submit" name="playersSize" id="playersSize" value="Cambiar cantidad de jugadores">
-</form>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=”stylesheet” href=”styles.css” type=”text/css” />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-primary" style = "text-align: center">
+            <h1>Dots and boxes</h1>
+        </nav>
+        
+        <div class="container" style="position: absolute; left: 500px; top: 150px">
+            <div class="card text-center " style="width: 50rem;">
+                <div class="card-header">
+                     <h2>Menu principal</h2>
+                     <br>
+                </div>
+                <div class="card-body">
+                    <form method = "post" action="/numberOfPlayers">
+                        <label for="sizes">Cantidad de jugadores</label>
+                        <br>
+                        <div class="form-group col-md-6">
+                            <select name="players" id = "players" class="form-control">
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button class="btn btn-primary" type="submit" name="playersSize" id="playersSize" value="Cambiar cantidad de jugadores">Cambiar cantidad de jugadores</button>
+                        </div> 
+                    </form>
+                    
+                   <form method = "post" action="/game">
+                        <div class="form-group">
+                            <label for="sizes">Dimensiones del tablero</label>
+                            <select name="sizes" id = "sizes" class="form-control">
+                                <option value="3">3x3</option>
+                                <option value="4">4x4</option>
+                                <option value="5" selected>5x5</option>
+                                <option value="6">6x6</option>
+                                <option value="7">7x7</option>
+                                <option value="8">8x8</option>
+                            </select>
+                            <br>    
+                            <label>Nombres</label>
+                            <% for index in 1..@number_of_players.to_i %>
+                                <input style="width: 50rem; left: 20px" id ="player<%=index%>" name="player<%=index%>" type="text" class="form-control" placeholder="Jugador <%=index%>">
+                                <br>
+                            <% end %>
+                        </div>
+                        <input class="btn btn-primary" type="submit" name="Jugar" id="Jugar" value="Jugar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
