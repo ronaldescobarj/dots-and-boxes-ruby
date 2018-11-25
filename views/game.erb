@@ -7,29 +7,42 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Dots and Boxes</h1>
-        <p>Turno de: <%= @players[@current_turn].name%></p>
-        <% @showable_players.each_with_index do |player, index| %>
-            <p>
-                <%=index+1%>. <%=player.name%>: <%=player.score%>
-            </p>
-        <% end %>
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Pausa</button>
-        <form method="post" action="/addLine">
-            <label>Coordenada X:</label>
-            <input type="number" min="1" max="<%= @size%>" name="x" id="x">
-            <label>Coordenada Y:</label>
-            <input type="number" min="1" max="<%= @size%>" name="y" id="y">
-            <select name="direction" id="direction">
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-            </select>
-            <input type="submit" value="Agregar">
-        </form>
-        <% if @game_over %>
-            <a href="/finalScores">Ver puntajes finales</a>
-        <% end %>
-        <div id="tablero">
+        <div class="col-md-12">
+            <h1>Dots and Boxes</h1>
+            <div>
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Pausa</button>
+            </div>
+            <h4>Turno de: <b> <%= @players[@current_turn].name%> </b></h4>
+            <% @showable_players.each_with_index do |player, index| %>
+                <h4 style="display: inline; margin-left:3em">
+                    <b><%=index+1%>.</b> <%=player.name%>: <%=player.score%>
+                </h4>
+            <% end %>
+            <form method="post" action="/addLine">
+                        <label>Coordenada X:</label>
+                        <input  style="display: inline;" type="number" min="1" max="<%= @size%>" name="x" id="x">
+                        <label style="margin-left:2em">Coordenada Y:</label>
+                        <input style="display: inline;" type="number" min="1" max="<%= @size%>" name="y" id="y">
+                        <label style="margin-left:2em">Direccion</label>
+                        <select style="display: inline;" name="direction" id="direction">
+                            <option value="horizontal">Horizontal</option>
+                            <option value="vertical">Vertical</option>
+                        </select>
+                        <input style="display: inline; margin-left:2em;" type="submit" class="btn btn-success btn-md" value="Agregar">
+            </form>
+            <% if @game_over %>
+                <a class="btn btn-info" href="/finalScores">Ver puntajes finales</a>
+            <% end %>
+        </div>
+
+        <div id="tablero" class="col-md-12">
+                <% for i in 1..@size %>
+                    <h5 style="color:#006E6D; left: <%=(100*i)+10%>px; top: 30px; position: absolute"><%=i%></h5>
+                <% end %>
+                <% for i in 1..@size %>
+                    <h5 style="color:#006E6D; left: 50px; top:<%=(100*i)-15%>px; position: absolute"><%=i%></h5>
+                <% end %>
+
             <svg width="<%=@size * 100 + 15%>" height="<%=@size * 100 + 15%>">
                 <% @lines.each do |l| %>
                     <line id="<%=l.id%>" style="opacity: <%=l.opacity%>" x1="<%=l.x1%>" x2="<%=l.x2%>" y1="<%=l.y1%>" y2="<%=l.y2%>" stroke="<%=l.color%>" stroke-width="8" />
@@ -42,23 +55,23 @@
                 <% end %>
             </svg>
         </div>
+
         <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Menu de pausa</h4>
+            <div class="modal-dialog">
+            <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Menu de pausa</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <%# <button type="button" class="btn btn-default" >Reiniciar partida</button> %>
+                        <a class="btn btn-default" href="/reset">Reiniciar partida</a>
+                        <a class="btn btn-default" href="/mainMenu">Salir de la partida</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Continuar</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-          <%# <button type="button" class="btn btn-default" >Reiniciar partida</button> %>
-          <a class="btn btn-default" href="/reset">Reiniciar partida</a>
-          <a class="btn btn-default" href="/mainMenu">Salir de la partida</a>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Continuar</button>
-        </div>
-      </div>
-    </div>
-  </div>
     </body>
 </html>

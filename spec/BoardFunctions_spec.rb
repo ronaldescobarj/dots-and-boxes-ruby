@@ -494,4 +494,19 @@ describe BoardFunctions do
         expect(@board_functions.is_game_over(lines)).to eq false
     end
 
+    it "deberia devolver true si la linea esta marcada" do
+        lines = @board_functions.generate_lines(2)
+        line_id = "l100_100_200_100"
+        lines.map do |l|
+            l.opacity = 1
+        end
+        expect(@board_functions.is_line_marked(line_id, lines)).to eq true
+    end
+
+    it "deberia devolver false si la linea no esta marcada" do
+        lines = @board_functions.generate_lines(2)
+        line_id = "l100_100_200_100"
+        expect(@board_functions.is_line_marked(line_id, lines)).to eq false
+    end
+
 end

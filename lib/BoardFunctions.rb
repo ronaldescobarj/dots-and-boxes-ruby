@@ -310,4 +310,15 @@ class BoardFunctions
         return true
     end
 
+    def is_line_marked(line_id, lines)
+        for line in lines
+            if line_id == line.id
+                if line.opacity == 1
+                    return true
+                end
+            end
+        end
+        return false
+    end
+
 end

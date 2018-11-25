@@ -95,16 +95,18 @@ class App < Sinatra::Base
     post '/addLine' do
         if validate_positions(params[:x].to_i, params[:y].to_i, params[:direction])
             line_id = $line_functions.generate_id(params[:x].to_i * 100, params[:y].to_i * 100, params[:direction])
-            $board_functions.mark_line(line_id, $lines_global, $current_turn)
-            formed_squares = $board_functions.get_directions_of_formed_squares($lines_global, line_id, $size)
-            $board_functions.make_marks_visible(formed_squares, $marks_global, line_id, $current_turn)
-            no_new_squares_formed = formed_squares.empty?
-            $player_functions.increase_score($players[$current_turn], formed_squares)
-            $showable_players = $players.clone
-            $current_turn = $board_functions.get_current_turn($current_turn, no_new_squares_formed, $players)
-            $player_functions.sort_by_score($showable_players)
-            if $board_functions.is_game_over($lines_global)
-                $game_over = true
+            if ! $board_functions.is_line_marked(line_id, $lines_global)
+                $board_functions.mark_line(line_id, $lines_global, $current_turn)
+                formed_squares = $board_functions.get_directions_of_formed_squares($lines_global, line_id, $size)
+                $board_functions.make_marks_visible(formed_squares, $marks_global, line_id, $current_turn)
+                no_new_squares_formed = formed_squares.empty?
+                $player_functions.increase_score($players[$current_turn], formed_squares)
+                $showable_players = $players.clone
+                $current_turn = $board_functions.get_current_turn($current_turn, no_new_squares_formed, $players)
+                $player_functions.sort_by_score($showable_players)
+                if $board_functions.is_game_over($lines_global)
+                    $game_over = true
+                end
             end
         end
         redirect "/game"

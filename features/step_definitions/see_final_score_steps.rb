@@ -71,8 +71,8 @@ When("presiono el boton {string}") do |boton|
 end
 
 Then("deberia ver en primer lugar a {string} y en segundo a {string}") do |jugador2, jugador1|
-  expect(page).to have_content("1. " + jugador2)
-  expect(page).to have_content("2. " + jugador1)
+  expect(page).to have_content("1.\r " + jugador2)
+  expect(page).to have_content("2.\r " + jugador1)
 end
 
 Then("deberia ver que gano {string}") do |ganador|
