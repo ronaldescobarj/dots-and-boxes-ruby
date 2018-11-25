@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
                         <% @showable_players.each_with_index do |player, index| %>
-                            <tr>
+                            <tr id="<%="p" + (index+1).to_s%>">
                                 <th style="font-size: 18px" scope="row"><%=index+1%>.</th>
                                 <td style="font-size: 18px"><%=player.name%></td>
                                 <td style="font-size: 18px"><%=player.score%></td>                            
