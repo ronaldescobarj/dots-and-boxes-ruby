@@ -8,27 +8,33 @@
     </head>
     <body>
     
+        <nav class="navbar navbar-dark bg-primary" style = "text-align: center">
+            <h1>Dots and boxes</h1>
+        </nav>
         <div>
 
-            <h3 style="text-align: center">Ganador: <%=@showable_players[0].name%></h3>
+            <h3 style="text-align: center">
+                <b>Ganador: <%=@showable_players[0].name%></b>
+            </h3>
 
             <h4 style="text-align: center">Puntajes finales</h4>
+            </br>
 
             <div style="width: 50%; margin: 0 auto">
                 <table class="table">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Posicion</th>
-                            <th scope="col">Jugador</th>
-                            <th scope="col">Puntaje</th>
+                            <th style="font-size: 18px" scope="col">Posicion</th>
+                            <th style="font-size: 18px" scope="col">Jugador</th>
+                            <th style="font-size: 18px" scope="col">Puntaje</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% @showable_players.each_with_index do |player, index| %>
                             <tr>
-                                <th scope="row"><%=index+1%>.</th>
-                                <td><%=player.name%></td>
-                                <td><%=player.score%></td>                            
+                                <th style="font-size: 18px" scope="row"><%=index+1%>.</th>
+                                <td style="font-size: 18px"><%=player.name%></td>
+                                <td style="font-size: 18px"><%=player.score%></td>                            
                             </tr>
                         <% end %>                
                     </tbody>
