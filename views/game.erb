@@ -8,28 +8,48 @@
     </head>
     <body>
         <div class="col-md-12">
-            <h1>Dots and Boxes</h1>
-            <div>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Pausa</button>
-            </div>
-            <h4>Turno de: <b> <%= @players[@current_turn].name%> </b></h4>
-            <% @showable_players.each_with_index do |player, index| %>
-                <h4 style="display: inline; margin-left:3em">
-                    <b><%=index+1%>.</b> <%=player.name%>: <%=player.score%>
-                </h4>
-            <% end %>
-            <form method="post" action="/addLine">
-                        <label>Coordenada X:</label>
-                        <input  style="display: inline;" type="number" min="1" max="<%= @size%>" name="x" id="x">
-                        <label style="margin-left:2em">Coordenada Y:</label>
-                        <input style="display: inline;" type="number" min="1" max="<%= @size%>" name="y" id="y">
-                        <label style="margin-left:2em">Direccion</label>
-                        <select style="display: inline;" name="direction" id="direction">
-                            <option value="horizontal">Horizontal</option>
-                            <option value="vertical">Vertical</option>
-                        </select>
-                        <input style="display: inline; margin-left:2em;" type="submit" class="btn btn-success btn-md" value="Agregar">
-            </form>
+            <nav class="navbar navbar-dark bg-primary" style = "text-align: center">
+                <h1>Dots and boxes
+                    <span style="position: absolute; right: 20px"> 
+                        <button type="button" class="btn btn-success btn-md pull-right" data-toggle="modal" data-target="#myModal">Pausa</button>
+                    </span>
+                </h1>
+            </nav>
+
+            <div class="card">
+                <div class="card-body" style="width: 100rem; left: 100px;">
+                    <div style="margin-left:7em">
+                        <h4>Turno de: <b> <%= @players[@current_turn].name%> </b></h4>
+                        <% @showable_players.each_with_index do |player, index| %>
+                            <h4 style="display: inline;">
+                                <b><%=index+1%>.</b> <%=player.name%>: <%=player.score%>
+                            </h4>
+                        <% end %>
+                    </div>
+                    <br>
+                    <form class="form-inline" method="post" action="/addLine">
+                        <div class="form-group">
+                            <input style = "width: 15rem;  margin-left:7em" type="number" min="1" max="<%= @size%>" name="x" id="x" class="form-control" placeholder="Coordenada X">                       
+                        </div>
+
+                        <div class="form-group">
+                            <input style = "width: 15rem; margin-left:4em" type="number" min="1" max="<%= @size%>" name="y" id="y" class="form-control" placeholder="Coordenada Y:">
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-left:3em; style = width: 15rem" for="sizes">Direccion</label>
+                            <select class="form-control" name="direction" id="direction">
+                               <option value="horizontal">Horizontal</option>
+                                <option value="vertical">Vertical</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input style="display: inline; margin-left:2em;" type="submit" class="btn btn-primary btn-md" value="Agregar">
+                        </div>
+                    </form>
+               </div>
+           </div>
             <% if @game_over %>
                 <a class="btn btn-info" href="/finalScores">Ver puntajes finales</a>
             <% end %>
