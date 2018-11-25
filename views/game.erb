@@ -10,7 +10,8 @@
         <div class="col-md-12">
             <h1>Dots and Boxes</h1>
             <div>
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Pausa</button>
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#pauseModal">Pausa</button>
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#helpModal">Ayuda</button>
             </div>
             <h4>Turno de: <b> <%= @players[@current_turn].name%> </b></h4>
             <% @showable_players.each_with_index do |player, index| %>
@@ -56,7 +57,7 @@
             </svg>
         </div>
 
-        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal fade" id="pauseModal" role="dialog">
             <div class="modal-dialog">
             <!-- Modal content-->
                 <div class="modal-content">
@@ -69,6 +70,33 @@
                         <a class="btn btn-default" href="/reset">Reiniciar partida</a>
                         <a class="btn btn-default" href="/mainMenu">Salir de la partida</a>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Continuar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="helpModal" role="dialog">
+            <div class="modal-dialog">
+            <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Ayuda</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p><b>Reglas del juego</b></p>
+                        <p>El juego consiste en formar la mayor cantidad de cuadraditos
+                        agregando lineas en el tablero. Cada jugador podrá agregar una linea por
+                        turno. Si un jugador logra cerrar un cuadrado al agregar una linea,
+                        este ganará puntos y mantendrá su turno. Gana el jugador que al llenarse
+                        el tablero, tenga la mayor cantidad de cuadraditos formados a su favor.</p>
+                        <p><b>Cómo jugar</b></p>
+                        <p>Para agregar una linea, se debe ingresar las coordenadas en X
+                        y en Y donde esta linea comenzará, y la direccion de la linea, la cual
+                        debe ser horizontal o vertical. Las coordenadas ingresadas deben estar
+                        dentro del rango del tamaño del tablero.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Entendido</button>
                     </div>
                 </div>
             </div>
